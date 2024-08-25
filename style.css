@@ -2,9 +2,9 @@
 img {
     -webkit-user-drag: none; /* Para Chrome/Safari */
     user-drag: none; /* Para otros navegadores */
-    pointer-events: none; /* Desactiva eventos del mouse */
 }
 
+/* Estilos generales del cuerpo y el contenedor */
 body, html {
     margin: 0;
     padding: 0;
@@ -20,6 +20,7 @@ body, html {
 
 .container {
     display: flex;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna en pantallas pequeñas */
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     gap: 20px; /* Espacio entre la imagen y la sección de info */
@@ -28,23 +29,26 @@ body, html {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 800px; /* Ancho del contenedor */
-    height: 600px; /* Altura del contenedor */
+    width: 90vw; /* Ancho adaptativo del contenedor */
+    max-width: 800px; /* Ancho máximo */
+    height: auto; /* Altura adaptativa del contenedor */
     box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
     overflow: hidden; /* Evita el scroll dentro del contenedor */
 }
 
 .image-wrapper, .info-wrapper {
-    flex: 1; /* Permite que ambos bloques crezcan por igual */
     display: flex;
     justify-content: center; /* Centra horizontalmente el contenido */
     align-items: center; /* Centra verticalmente el contenido */
-width: 300px;
+}
+
+.image-wrapper {
+    max-width: 100%; /* Ajusta el ancho máximo para adaptarse al contenedor */
 }
 
 .image-wrapper img {
-    max-width: 300px;
-    max-height: 500px; /* Ajusta la altura máxima para que no se desborde del contenedor */
+    max-width: 100%;
+    height: auto; /* Ajusta la altura automáticamente */
     border-radius: 8px;
 }
 
@@ -54,7 +58,7 @@ width: 300px;
     align-items: center;
     justify-content: center;
     text-align: center;
-	max-width: 300px;
+    max-width: 100%;
 }
 
 .logo-text {
@@ -69,7 +73,6 @@ width: 300px;
 .text {
     font-size: 18px;
     margin: 10px 0;
-width: 200px;
 }
 
 .reserve-button {
@@ -81,7 +84,6 @@ width: 200px;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
-width: 200px;
 }
 
 .reserve-button:hover {
@@ -97,4 +99,32 @@ width: 200px;
     background-color: #fff;
     border-top: 1px solid #ddd;
     box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna en pantallas pequeñas */
+        width: 95vw;
+        padding: 10px;
+    }
+
+    .image-wrapper, .info-wrapper {
+        max-width: 100%; /* Ajusta el ancho máximo para adaptarse al contenedor */
+    }
+
+    .reserve-button {
+        width: 100%; /* Botón a todo el ancho del contenedor */
+    }
+}
+
+@media (max-width: 480px) {
+    .text {
+        font-size: 16px; /* Ajusta el tamaño del texto en pantallas más pequeñas */
+    }
+
+    .reserve-button {
+        padding: 12px 20px; /* Ajusta el padding en pantallas más pequeñas */
+        font-size: 16px; /* Ajusta el tamaño de la fuente en pantallas más pequeñas */
+    }
 }
